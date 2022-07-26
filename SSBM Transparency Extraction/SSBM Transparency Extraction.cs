@@ -2,7 +2,7 @@
 // Submenu: Object
 // Author: Neil Harbin
 // Title: SSBM Transparency Extraction
-// Version: 1.1
+// Version: 1.2
 // Desc: Using a black or white background image from the clipboard, remove the background from the same image with the opposite background color, leaving only the foreground objects with proper transparency intact.
 // Keywords: SSBM Transparency
 // URL:
@@ -88,20 +88,26 @@ void PreRender(Surface dst, Surface src)
                 byte redDif = (byte)Math.Abs(SrcPixel.R - AuxPixel.R);
                 byte greenDif = (byte)Math.Abs(SrcPixel.G - AuxPixel.G);
                 byte blueDif = (byte)Math.Abs(SrcPixel.B - AuxPixel.B);
+                byte rAlpha = (byte) (byte.MaxValue - redDif);
+                byte gAlpha = (byte) (byte.MaxValue - greenDif);
+                byte bAlpha = (byte) (byte.MaxValue - blueDif);
                 byte alpha = (byte) (byte.MaxValue - AverageColor(Color.FromArgb(redDif,greenDif,blueDif)));
                 if (AlphaMapOnly){
-                    dst[x,y] = ColorBgra.FromBgra(alpha,alpha,alpha,255);
+                    dst[x,y] = ColorBgra.FromBgra(bAlpha,gAlpha,rAlpha,255);
                 }else{                
                     //alpha will be 255 if there it is purely the background
                     if (alpha < byte.MaxValue){
+                        float rpercentage = rAlpha / 255f;
+                        float gpercentage = gAlpha / 255f;
+                        float bpercentage = bAlpha / 255f;
                         float percentage = alpha / 255f;
                         ColorBgra blackBackPixel = AverageColor(SrcPixel) >= AverageColor(AuxPixel) ? AuxPixel : SrcPixel;
                         if (percentage == 0){
                             dst[x,y] = Color.FromArgb(0,0,0,0);
                         }else{
-                            byte newRed = (byte)(Math.Min(255, blackBackPixel.R / percentage));
-                            byte newGreen = (byte)(Math.Min(255, blackBackPixel.G / percentage));
-                            byte newBlue = (byte)(Math.Min(255, blackBackPixel.B / percentage));
+                            byte newRed = (byte)(Math.Min(255, blackBackPixel.R / rpercentage));
+                            byte newGreen = (byte)(Math.Min(255, blackBackPixel.G / gpercentage));
+                            byte newBlue = (byte)(Math.Min(255, blackBackPixel.B / bpercentage));
                             dst[x,y] = ColorBgra.FromBgra(newBlue,newGreen,newRed,alpha);                        
                         }
                     }else{
