@@ -1,6 +1,6 @@
 # AlphaSolve ![Source Black](https://github.com/NeilHarbin0/PdnAlphaSolve/blob/master/AlphaSolve/AlphaSolveIcon.png?raw=true)
 
-This is a plugin for [Paint .NET](getpaint.net) to take two images of a subject, one with a black background, and one whith a white background, solving for the proper partial transparency and clean outline of the subject. Originally developed for use with Super Smash Brothers Melee debug mode to get clear images of character hit/hurtboxes.
+This is a plugin for [Paint .NET](https://getpaint.net/) to take two images of a subject, one with a black background, and one whith a white background, solving for the proper partial transparency and clean outline of the subject. Originally developed for use with Super Smash Brothers Melee debug mode to get clear images of character hit/hurtboxes.
 
 ## Usage
 Download the latest release zip from the [releases page](https://github.com/NeilHarbin0/PdnAlphaSolve/releases). Extract the zip and run the installer with Paint .NET closed. Once the plugin dll has been installed to the Paint .NET ```Effects``` folder and the application has been restarted, it can be found via the ```Effects -> Object``` sub-menu.
