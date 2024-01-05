@@ -31,7 +31,7 @@ Below are images of other approaches which generally miss partial transparency, 
 
 ### Magic Wand
 
-Only of these images may look relatively fine depending on if you view GitHub in light or dark mode.
+Only one of these images may look relatively fine depending on if you view GitHub in light or dark mode.
 
 ![Source Black](https://github.com/NeilHarbin0/PdnAlphaSolve/blob/master/AlphaSolve/Resources/ExampleWandBlack.png?raw=true)
 ![Source Black](https://github.com/NeilHarbin0/PdnAlphaSolve/blob/master/AlphaSolve/Resources/ExampleWandWhite.png?raw=true)
